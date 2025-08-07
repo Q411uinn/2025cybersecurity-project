@@ -9,50 +9,48 @@
 ## 📁 项目结构
 ```
 project1-sm4-optimization/
-├── src/             # 源代码
-│   └── basic/       # 基础实现（C语言）
-├── tests/           # 功能测试
-├── benchmarks/      # 性能测试
-├── Makefile         # 构建配置
-├── README.md        # 项目说明
+├── src/
+│ ├── basic/ # 基础实现代码
+│ ├── simd/ # SIMD优化实现
+│ └── aesni/ # AES-NI优化实现
+├── tests/ # 功能测试代码
+├── benchmarks/ # 性能测试代码
+├── Makefile # 编译脚本
+├── build.bat # Windows下编译脚本
+└── README.md # 项目说明
 ```
 
-## 🔧 构建与运行
+## 编译与运行
 
-### 编译测试程序
+### 使用 Make 编译
+
 ```bash
-make
+make all          # 编译所有版本及基准测试
+make basic        # 仅编译基础版本
+make simd         # 编译SIMD优化版本
+make aesni        # 编译AES-NI优化版本
+make clean        # 清理可执行文件
 ```
 
 ### 运行测试
 ```bash
-make run
+./test_sm4_basic
+./test_sm4_simd
+./test_sm4_aesni
 ```
 
 ### 性能测试
 ```bash
-make benchmark
+make benchmark-all
 ```
 
 ## ✅ 功能特性
 - 支持16字节密钥的密钥扩展
-- 支持加密、解密流程
-- 兼容国标GM/T 0002-2012
+- 基础实现兼容国标GM/T 0002-2012
+- SIMD并行加速（SSE指令集）
+- AES-NI指令集加速
 - 模块清晰、易扩展
 
 ---
 
-### 4. src/basic/sm4_basic.h
-
-```c
-#ifndef SM4_BASIC_H
-#define SM4_BASIC_H
-
-#include <stdint.h>
-
-void sm4_key_schedule(const uint8_t key[16], uint32_t rk[32]);
-void sm4_encrypt_basic(const uint8_t in[16], uint8_t out[16], const uint32_t rk[32]);
-void sm4_decrypt_basic(const uint8_t in[16], uint8_t out[16], const uint32_t rk[32]);
-
-#endif // SM4_BASIC_H
->>>>>>> b9bd1d8 (Initial commit: SM4 optimized project)
+如果你有任何问题或建议，欢迎提 Issue 或 Pull Request！
