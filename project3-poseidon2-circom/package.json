@@ -1,0 +1,24 @@
+{
+  "name": "project3-poseidon2-circom",
+  "version": "0.1.0",
+  "scripts": {
+    "compile": "bash scripts/compile.sh",
+    "prove": "bash scripts/prove.sh",
+    "verify": "bash scripts/verify.sh",
+    "test": "node test/test_poseidon2.js"
+  },
+  "devDependencies": {
+    "snarkjs": "^0.7.5"
+  },
+  "description": "本项目基于Poseidon2哈希函数，构建了适用于零知识证明（zk-SNARKs）的Circom电路。 支持t=2和t=3两种状态大小，灵活适配多种应用场景。 包含完整的电路实现、辅助模块、构建与证明脚本，助你快速上手零知识证明。",
+  "main": "calc_hash.js",
+  "directories": {
+    "test": "test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "circomlibjs": "^0.1.7"
+  }
+}
